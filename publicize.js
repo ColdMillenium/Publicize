@@ -24,4 +24,5 @@ myExec('git pull');
 myExec(`git push`);
 myExec(`git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch .env" HEAD`);
 exec(`git push public --force`);
+exec(`git fetch --force`);
 
