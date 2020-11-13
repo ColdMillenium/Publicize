@@ -4,6 +4,7 @@ const { exec } = require("child_process");
 function myExec(command){
     //always going to outthe same way so let's just make this a function
     function output(error, stdout, stderr){
+        console.log("command: "+ command);
         if (error) {
             console.log(`error: ${error.message}`);
             process.abort();
@@ -16,7 +17,7 @@ function myExec(command){
         }
         console.log(`stdout: ${stdout}`);
     }
-    exec(`git push`, output);
+    exec(command, output);
 }
 
 //commands we're executing
