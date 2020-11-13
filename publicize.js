@@ -1,0 +1,27 @@
+const { exec } = require("child_process");
+
+
+function myExec(command){
+    //always going to outthe same way so let's just make this a function
+    function output(error, stdout, stderr){
+        if (error) {
+            console.log(`error: ${error.message}`);
+            process.abort();
+    
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            end = true;
+            process.abort();
+        }
+        console.log(`stdout: ${stdout}`);
+    }
+    exec(`git push`, output(error, stdout, stderr));
+}
+
+//commands we're executing
+myExec('git pull');
+myExec(`git push`);
+myExec(`git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch .env" HEAD`);
+exec(`git push public --force`);
+
