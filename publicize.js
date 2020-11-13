@@ -16,13 +16,13 @@ function myExec(command){
         }
         console.log(`stdout: ${stdout}`);
     }
-    exec(`git push`, output(error, stdout, stderr));
+    exec(`git push`, output);
 }
 
 //commands we're executing
 myExec('git pull');
 myExec(`git push`);
 myExec(`git filter-branch --index-filter "git rm -rf --cached --ignore-unmatch .env" HEAD`);
-exec(`git push public --force`);
-exec(`git fetch --force`);
+myExec(`git push public --force`);
+myExec(`git fetch --force`);
 
